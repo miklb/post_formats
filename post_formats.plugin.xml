@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<pluggable type="plugin">
+	<name>Post Formats</name>
+	<license url="http://www.apache.org/licenses/LICENSE-2.0.html">Apache Software License 2.0</license>
+
+	<author url="http://owenw.com/">Owen Winkler</author>
+
+	<version>1.0</version>
+	<url>http://redalt.com/</url>
+	<description><![CDATA[Allows users to assign different formats to their entries, which can then be rendered using different templates as supplied by a theme.]]></description>
+
+	<copyright>2013</copyright>
+
+	<help>
+		<value><![CDATA[
+		<p>A theme must use the <code>$theme->content($post)</code> syntax for displaying post content to make use of this plugin.</p>
+		<p>When the <code>$theme->content($post)</code> is executed normally, a template is chosen for the value of $post that matches its content type, such as "entry.php" for Posts that are of type "entry".
+		This plugin adds the format as part of the possible template name, so for example, if you select "Aside" as the format, the template that Habari first looks for to display the $post is "entry.aside.php".  If "entry.aside.php" does not exist, then "entry.php" is used as a fallback.</p>
+		<p>A theme can advertise the format templates it supports by implementing the method <code>filter_get_post_formats($formats)</code>.  The method should add new format names to the $formats variable and return it.  The formats will appear in the list on the post entry page and in the plugin configuration.</p>
+		<p>It is also possible to add custom formats to the list in the plugin configuration.  These formats will do nothing unless the theme includes a matching template, but it does allow the possibility to add a template file to the theme for the format, then add the custom format to the list without altering the theme's class code, which might be handy.</p>
+		]]></value>
+	</help>
+
+	<guid>738fdf7a-2024-4911-8946-79eee9bfd9de</guid>
+
+</pluggable>
