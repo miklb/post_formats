@@ -74,6 +74,7 @@ class PostFormatsPlugin extends Plugin
 			$custom = explode("\n", $custom);
 			$custom = array_map('trim', $custom);
 			$custom = array_filter($custom);
+			$custom = array_combine(array_map('Utils::slugify', $custom), $custom);
 			$formats = array_merge($formats, $custom);
 		}
 
