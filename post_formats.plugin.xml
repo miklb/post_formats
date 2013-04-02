@@ -5,7 +5,7 @@
 
 	<author url="http://owenw.com/">Owen Winkler</author>
 
-	<version>1.0</version>
+	<version>1.0-1.0</version>
 	<url>http://redalt.com/addon/plugins/post-formats</url>
 	<description><![CDATA[Allows users to assign different formats to their entries, which can then be rendered using different templates as supplied by a theme.]]></description>
 
