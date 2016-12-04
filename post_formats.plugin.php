@@ -61,12 +61,12 @@ class PostFormatsPlugin extends Plugin
 	function get_formats($system = false) {
 		$formats = array(
 			'standard' => 'Standard Entry',
-			'note' => 'Note',
+			'aside' => 'Aside',
 			'audio' => 'Audio',
-			'reply' => 'readline_redisplay',
+			'Chat' => 'Chat',
 			'gallery' => 'Gallery',
-			'photo' => 'Photo',
-			'bookmark' => 'Bookmark',
+			'imaage' => 'Image',
+			'link' => 'Link',
 			'quote' => 'Quote',
 			'status' => 'Status',
 			'video' => 'Video',
