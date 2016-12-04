@@ -1,5 +1,7 @@
 <?php
 
+namespace Habari;
+
 class PostFormatsPlugin extends Plugin
 {
 
