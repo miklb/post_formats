@@ -6,13 +6,14 @@ class PostFormatsPlugin extends Plugin
 {
 
 	function configure() {
-		$form = new FormUI('post_formats');
+		$form = new FormUI( strtolower( get_class( $this ) ) );
 
 		$formats = $this->get_formats(true);
 
-		$form->append(new FormControlTextArea('formats', 'post_formats__custom_formats', _t('Custom Formats (one per line)', 'post_formats')));
-		$form->append(new FormControlStatic('existing_formats', '<fieldset><legend>' . _t('Current System-Supplied Formats', 'post_formats') . '</legend><ul style="list-style:disc inside;"><li>' . implode('</li><li>', $formats) . '</li></ul></fieldset>'));
-		$form->append('submit', 'submit', 'Submit');
+
+		$form->append(FormControlLabel::wrap(_t('Custom Formats(one perline)' ), FormControlTextArea::create('formats', 'post_formats__custom_formats')));
+		$form->append(FormControlStatic::create('existing_formats', '<fieldset><legend>' . _t('Current System-Supplied Formats', 'post_formats') . '</legend><ul style="list-style:disc inside;"><li>' . implode('</li><li>', $formats) . '</li></ul></fieldset>'));
+		$form->append(FormControlSubmit::create('submit')->set_caption('Submit'));
 
 		return $form;
 	}
