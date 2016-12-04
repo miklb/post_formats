@@ -77,7 +77,7 @@ class PostFormatsPlugin extends Plugin
 			$custom = explode("\n", $custom);
 			$custom = array_map('trim', $custom);
 			$custom = array_filter($custom);
-			$custom = array_combine(array_map('Utils::slugify', $custom), $custom);
+			$custom = array_combine(array_map('Habari\Utils::slugify', $custom), $custom);
 			$formats = array_merge($formats, $custom);
 		}
 
@@ -93,13 +93,9 @@ class PostFormatsPlugin extends Plugin
 			$options[$post_format] = _t('%$1s (unknown', array($post_format), 'post_formats');
 		}
 		$form->append(
-			FormControlLabel::wrap(
-				_t('Post Format'),
-				FormControlSelect::create(
-					$post,
-					$options
-					)
-				)
+				FormControlSelect::create($post->slug)
+				->set_options($options)
+				->label(_t('Post Format'))
 			);
 	}
 
