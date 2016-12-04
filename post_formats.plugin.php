@@ -92,7 +92,15 @@ class PostFormatsPlugin extends Plugin
 		if(!isset($options[$post_format]) && $post_format != '') {
 			$options[$post_format] = _t('%$1s (unknown', array($post_format), 'post_formats');
 		}
-		$form->settings->append(new FormControlSelect('format', $post, _t('Post Format', 'post_formats'), $options, 'tabcontrol_select'));
+		$form->append(
+			FormControlLabel::wrap(
+				_t('Post Format'),
+				FormControlSelect::create(
+					$post,
+					$options
+					)
+				)
+			);
 	}
 
 }
