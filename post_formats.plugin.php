@@ -5,7 +5,8 @@ namespace Habari;
 class PostFormatsPlugin extends Plugin
 {
 
-	function configure() {
+	function configure()
+	{
 		$form = new FormUI( strtolower( get_class( $this ) ) );
 
 		$formats = $this->get_formats(true);
@@ -23,7 +24,8 @@ class PostFormatsPlugin extends Plugin
 	 * @param Post $post
 	 * @return string
 	 */
-	function filter_post_class($class, $post) {
+	function filter_post_class($class, $post)
+	{
 		if(empty($class)) {
 			$class = array();
 		}
@@ -46,7 +48,8 @@ class PostFormatsPlugin extends Plugin
 		return implode(' ', $class);
 	}
 
-	function filter_content_type($type, $post) {
+	function filter_content_type($type, $post)
+	{
 		if($post->content_type == Post::type('entry')) {
 			if(isset($post->info->format)) {
 				array_unshift($type, 'entry.' . $post->info->format);
@@ -58,7 +61,8 @@ class PostFormatsPlugin extends Plugin
 		return $type;
 	}
 
-	function get_formats($system = false) {
+	function get_formats($system = false)
+	{
 		$formats = array(
 			'standard' => 'Standard Entry',
 			'aside' => 'Aside',
@@ -86,13 +90,15 @@ class PostFormatsPlugin extends Plugin
 	}
 
 
-	function action_form_publish_entry($form, $post, $context) {
+	function action_form_publish($form, $post)
+	{
 		$options = $this->get_formats();
 		$post_format = $post->info->format;
 		if(!isset($options[$post_format]) && $post_format != '') {
 			$options[$post_format] = _t('%$1s (unknown', array($post_format), 'post_formats');
 		}
-		$form->append(
+		$postformats = $form->publish_controls->append(FormControlFieldset::create('post_formats')->set_caption(_t( 'Post Formats' )) );
+		$fieldselect = $postformats->append(
 				FormControlSelect::create($post->slug)
 				->set_options($options)
 				->label(_t('Post Format'))
